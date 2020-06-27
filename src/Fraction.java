@@ -35,7 +35,13 @@ public class Fraction {
         return den;
     } 
     public String toString() {
-        return this.num + "/" + this.den;
+        if (this.num == 0) {
+            return "0";
+        } else if (this.num == this.den) {
+            return "1";
+        } else {
+            return this.num + "/" + this.den;
+        }
     }
     public double toDouble() {
         return this.num / this.den;
@@ -56,10 +62,12 @@ public class Fraction {
     }
     public Fraction multiply(Fraction other) {
         Fraction prod = new Fraction(this.num * other.num, this.den * other.den);
+        prod.toLowestTerms();
         return prod;
     }
     public Fraction divide(Fraction other) {
         Fraction div = new Fraction(this.num * other.den, this.den * other.num);
+        div.toLowestTerms();
         return div;
     }
     public boolean equals(Object other) {
@@ -68,9 +76,11 @@ public class Fraction {
         return (this.toDouble() == new_other.toDouble());
     }
     public void toLowestTerms() {
-        int fract_gcd = gcd(this.num, this.den);
-        this.num = this.num / fract_gcd;
-        this.den = this.den / fract_gcd;
+        if (this.num != 0) {
+            int fract_gcd = gcd(this.num, this.den);
+            this.num = this.num / fract_gcd;
+            this.den = this.den / fract_gcd;
+        }
     }
     public int gcd(int num, int den) { // find greatest common denominator
         int rem;
