@@ -1,4 +1,28 @@
 public class Fraction {
+    private int num;
+    private int den;
+
+    public Fraction(int myNum, int myDen) {
+        if (myDen==0) { // catches denominator equals to 0
+            throw new IllegalArgumentException("The denominator is equal to zero");
+        } else {
+            if (myDen>0) { // denominator positive
+                num = myNum;
+                den = myDen;
+            } else { // denominator negative
+                if (myNum >= 0) { // numerator positive
+                    num = -myNum;
+                    den = Math.abs(myDen); 
+                } else { // numerator negative
+                    num = Math.abs(myNum);
+                    den = Math.abs(myDen);
+                }
+
+            }
+        }
+    }
+
+    /*
     public int getNumerator() {
 
     }
@@ -30,6 +54,7 @@ public class Fraction {
 
     }
     public int gcd(int num, int den) {
-        
+
     }
+    */
 }
