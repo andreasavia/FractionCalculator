@@ -2,33 +2,37 @@ public class Fraction {
     private int num;
     private int den;
 
-    public Fraction(int myNum, int myDen) {
-        if (myDen==0) { // catches denominator equals to 0
+    public Fraction(int num, int den) {
+        if (den==0) { // catches denominator equals to 0
             throw new IllegalArgumentException("The denominator is equal to zero");
         } else {
-            if (myDen>0) { // denominator positive
-                num = myNum;
-                den = myDen;
+            if (den>0) { // denominator positive
+                this.num = num;
+                this.den = den;
             } else { // denominator negative
-                if (myNum >= 0) { // numerator positive
-                    num = -myNum;
-                    den = Math.abs(myDen); 
+                if (num >= 0) { // numerator positive
+                    this.num = -num;
+                    this.den = Math.abs(den); 
                 } else { // numerator negative
-                    num = Math.abs(myNum);
-                    den = Math.abs(myDen);
+                    this.num = Math.abs(num);
+                    this.den = Math.abs(den);
                 }
 
             }
         }
     }
-
-    /*
+    public Fraction(int num) {
+        this(num,1);
+    }
+    public Fraction() {
+        this(0,1);
+    }
     public int getNumerator() {
-
+        return num;
     }
     public int getDenominator() {
-
-    }
+        return den;
+    } /*
     public String toString() {
 
     }
